@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -39,6 +39,7 @@ public final class JImageViewer extends JPanel {
 	public JImageViewer setImage(BufferedImage image) {
 		if (image == null)
 			throw new NullPointerException("[JImageViewer] Image can't be null.");
+
 		canvas.setImage(image);
 		scaleOptionBar.setEnabled(true);
 		return (this);
@@ -152,6 +153,15 @@ public final class JImageViewer extends JPanel {
 			add(Box.createHorizontalGlue());
 		}
 
+		@Override
+		protected void paintComponent(Graphics g) {
+			super.paintComponent(g);
+			Graphics2D g2 = (Graphics2D) g;
+
+			g2.setColor(canvas.getBackground());
+			g2.fillRect(0, 0, getWidth(), getHeight());
+		}
+
 		private void addScaleOption(String title, ActionListener listener) {
 			JToggleButton button = new JToggleButton(title);
 
@@ -163,21 +173,12 @@ public final class JImageViewer extends JPanel {
 			group.add(button);
 			add(button);
 		}
-
-		@Override
-		protected void paintComponent(Graphics g) {
-			super.paintComponent(g);
-			Graphics2D g2 = (Graphics2D) g;
-
-			g2.setColor(canvas.getBackground());
-			g2.fillRect(0, 0, getWidth(), getHeight());
-		}
 	}
 
 	public enum ScaleType {
 		FIT_TO_HEIGHT("Fit to height"),
 		FIT_TO_WIDTH("Fit to width"),
-		MANUAL("Manual"),
+		MANUAL("Manual"), // deprecated?
 		STRETCH_TO_FIT("Stretch to fit"),
 		SCALE_TO_FIT("Scale to fit");
 

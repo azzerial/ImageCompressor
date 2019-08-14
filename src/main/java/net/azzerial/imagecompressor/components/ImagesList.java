@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -18,7 +18,6 @@ package net.azzerial.imagecompressor.components;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.plaf.ListUI;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -32,17 +31,16 @@ public final class ImagesList extends JPanel {
 
 	private final DefaultListModel<String> model;
 	private final JList<String> list;
-
 	private final List<ImageElement> elements;
 
 	public ImagesList(final JImageViewer viewer) {
-		this.viewer = viewer;
 		setLayout(new BorderLayout());
 		setMinimumSize(new Dimension(250, 10));
 		setPreferredSize(new Dimension(250, 10));
 
-		this.elements = new LinkedList<>();
+		this.viewer = viewer;
 		this.model = new DefaultListModel<>();
+		this.elements = new LinkedList<>();
 
 		this.list = new JList<>(model);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -53,9 +51,13 @@ public final class ImagesList extends JPanel {
 		add(listScroller, BorderLayout.CENTER);
 	}
 
+	private ListSelectionListener getListSelectionListener() {
+		return (s -> viewer.setImage(elements.get(list.getSelectedIndex()).getImage()));
+	}
+
 	public boolean addElement(final ImageElement element) {
 		for (ImageElement e : elements)
-			if (e.getFile().getAbsolutePath().equals(element.getFile().getAbsolutePath()))
+			if (e.getFile().equals(element.getFile()))
 				return (false);
 		model.addElement(element.getFile().getName());
 		elements.add(element);
@@ -68,11 +70,6 @@ public final class ImagesList extends JPanel {
 			if (elements.get(i).getFile().equals(file))
 				list.setSelectedIndex(i);
 	}
-
-	private ListSelectionListener getListSelectionListener() {
-		return (s -> viewer.setImage(elements.get(list.getSelectedIndex()).getImage()));
-	}
-
 
 	public static final class ImageElement {
 

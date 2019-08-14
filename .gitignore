@@ -1,0 +1,15 @@
+# Gradle
+/build/
+/.gradle/
+/out/
+
+
+# Intellij Idea
+/.idea/
+*.iml
+*.ipr
+*.iws
+
+
+# Image Compressor
+/src/main/java/net/azzerial/imagecompressor/deprecated/
