@@ -6,7 +6,7 @@
 
 [ ![version-shield][] ][version]
 [ ![license-shield][] ][license]
-![jar-size]
+[ ![jar-size][] ][version]
 
 ## ImageCompressor
 
