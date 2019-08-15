@@ -16,7 +16,7 @@ A simple image compressor made in Java.
 
 This project is based on an University project originally built in Haskell.
 
-My main goal with this project isn't to make a useful/functioning desktop application, but to try out and learn how to make some. So see this ask an experiment rather than a project.
+My main goal with this project isn't to make a useful/functioning desktop application, but to try out and learn how to make some. So see this as an experiment rather than a project.
 
 This experiment is also an opportunity for me to try out the release feature from Github. 
 
