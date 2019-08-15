@@ -1,8 +1,8 @@
 [version]: https://github.com/Azzerial/ImageCompressor/releases/latest
 [version-shield]: https://img.shields.io/github/tag-date/Azzerial/ImageCompressor?label=Download
 [license]: https://github.com/Azzerial/ImageCompressor/tree/master/LICENSE
-[license-shield]: https://img.shields.io/badge/License-Apache%202.0-lightgrey.svg
-[repo-size]: https://img.shields.io/github/repo-size/Azzerial/ImageCompressor?label=Repository%20Size
+[license-shield]: https://img.shields.io/github/license/Azzerial/ImageCompressor?color=lightgray&label=License
+[repo-size]: https://img.shields.io/github/repo-size/Azzerial/ImageCompressor?color=salmon&label=Repository%20Size
 
 [ ![version-shield][] ][version]
 [ ![license-shield][] ][license]
