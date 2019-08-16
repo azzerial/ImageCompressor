@@ -22,6 +22,7 @@ import net.azzerial.imagecompressor.components.ImagesList;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -41,12 +42,12 @@ public final class ApplicationFrame extends JFrame {
 	public ApplicationFrame(String title) throws HeadlessException {
 		super(title);
 
-		this.settingsPanel = new JFileDrop(getFileDropListener());
+		this.settingsPanel = new JFileDrop(new LineBorder(new Color(0x4D88FF),5), getFileDropListener());
 		settingsPanel.setText("Drop image file here");
 		settingsPanel.setPreferredSize(new Dimension(10, 200));
 		getContentPane().add(settingsPanel, BorderLayout.SOUTH);
 
-		this.previewPanel = new JImageViewer(Color.BLACK);
+		this.previewPanel = new JImageViewer(Color.BLACK, getFileDropListener());
 		previewPanel.setDropTarget(JFileDrop.createDropTarget(getFileDropListener()));
 
 		this.imagesList = new ImagesList(previewPanel);

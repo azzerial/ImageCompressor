@@ -26,10 +26,10 @@ public final class JImageViewer extends JPanel {
 	private final ImageCanvas canvas;
 	private final ScaleOptionBar scaleOptionBar;
 
-	public JImageViewer(final Color color) {
+	public JImageViewer(final Color color, final JFileDrop.FileDropListener listener) {
 		setLayout(new BorderLayout());
 
-		this.canvas = new ImageCanvas(color, ScaleType.SCALE_TO_FIT);
+		this.canvas = new ImageCanvas(color, ScaleType.SCALE_TO_FIT, listener);
 		add(canvas, BorderLayout.CENTER);
 
 		this.scaleOptionBar = new ScaleOptionBar(canvas);
@@ -45,32 +45,41 @@ public final class JImageViewer extends JPanel {
 		return (this);
 	}
 
-	private static final class ImageCanvas extends JPanel {
+	private static final class ImageCanvas extends JFileDrop {
 
 		private final Color color;
+		private final Color emptyColor;
 
 		private BufferedImage image;
 		private ScaleType scaleType;
 
-		public ImageCanvas(final Color color, final ScaleType scaleType) {
+		public ImageCanvas(final Color color, final ScaleType scaleType, final FileDropListener listener) {
+			super(null, listener);
 			this.color = color;
+			this.emptyColor = new Color(0xDCDCDC);
 			this.scaleType = scaleType;
 
-			setBackground(color);
+			setBackground(emptyColor);
 		}
 
 		@Override
 		public void paint(Graphics g) {
 			super.paint(g);
 
-			if (image == null)
+			int width, height;
+
+			if (image == null) {
+				g.drawString("Drag and drop image here", (getWidth() / 2) - 92, (getHeight() / 2) + 8);
+				width = getWidth() * 3 / 5;
+				height = getHeight() * 3 / 5;
+				g.drawRoundRect((getWidth() - width) / 2, (getHeight() - height) / 2, width, height, 35, 35);
 				return;
+			}
 
 			int dx = 0;
 			int dy = 0;
 			int dx2 = 0;
 			int dy2 = 0;
-			int width, height;
 			double scale;
 
 			switch (scaleType) {
@@ -119,13 +128,21 @@ public final class JImageViewer extends JPanel {
 			g.drawImage(image, dx, dy, dx2, dy2, 0, 0, image.getWidth(), image.getHeight(), color, this);
 		}
 
+		public void clear() {
+			this.image = null;
+			setBackground(emptyColor);
+		}
+
 		public BufferedImage getImage() {
 			return (image);
 		}
 
 		public ImageCanvas setImage(BufferedImage image) {
 			this.image = image;
-			repaint();
+			if (getBackground().equals(color))
+				repaint();
+			else
+				setBackground(color);
 			return (this);
 		}
 
