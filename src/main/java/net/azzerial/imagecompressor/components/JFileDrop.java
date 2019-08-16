@@ -18,6 +18,7 @@ package net.azzerial.imagecompressor.components;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
@@ -29,7 +30,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.List;
 
-public final class JFileDrop extends JPanel {
+public class JFileDrop extends JPanel {
 
 	private static Boolean canFileDrop;
 
@@ -39,7 +40,7 @@ public final class JFileDrop extends JPanel {
 	private JLabel text;
 
 	public JFileDrop(final FileDropListener listener) {
-		this(new LineBorder(new Color(0x4D88FF), 5), listener);
+		this(null, listener);
 	}
 
 	public JFileDrop(final Border border, final FileDropListener fileDropListener) {
@@ -58,8 +59,10 @@ public final class JFileDrop extends JPanel {
 					if (dataFlavors[i].isFlavorJavaFileListType())
 						isValid = true;
 				if (isValid) {
-					defaultBorder = getBorder();
-					setBorder(hoverBorder);
+					if (hoverBorder != null) {
+						defaultBorder = getBorder();
+						setBorder(hoverBorder);
+					}
 					event.acceptDrag(1);
 				} else
 					event.rejectDrag();
@@ -73,12 +76,14 @@ public final class JFileDrop extends JPanel {
 
 			@Override
 			public void dragExit(DropTargetEvent event) {
-				setBorder(defaultBorder);
+				if (hoverBorder != null)
+					setBorder(defaultBorder);
 			}
 
 			@Override
 			public void drop(DropTargetDropEvent event) {
-				setBorder(defaultBorder);
+				if (hoverBorder != null)
+					setBorder(defaultBorder);
 				try {
 					Transferable transferable = event.getTransferable();
 					File[] files = null;
