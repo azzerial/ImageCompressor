@@ -25,17 +25,17 @@ This experiment is also an opportunity for me to try out the release feature fro
 ##### Code links
 
 * Oracle Java™ Tutorials:
-  * [Drawing an Image](https://docs.oracle.com/javase/tutorial/2d/images/drawimage.html)
-  * [How to Use Lists](https://docs.oracle.com/javase/tutorial/uiswing/components/list.html)
-  * [How to Use Buttons, Check Boxes, and Radio Buttons](https://docs.oracle.com/javase/tutorial/uiswing/components/button.html)
+  * **[Drawing an Image](https://docs.oracle.com/javase/tutorial/2d/images/drawimage.html)**
+  * **[How to Use Lists](https://docs.oracle.com/javase/tutorial/uiswing/components/list.html)**
+  * **[How to Use Buttons, Check Boxes, and Radio Buttons](https://docs.oracle.com/javase/tutorial/uiswing/components/button.html)**
 
 ##### Inspiration
 
-* JImageViewer inspired from [Java IMage Viewer](https://windows.lucutech.com/ReadArticle/Read.html#614823-java-image-viewer.html).
-* JFileDrop inspired from [FileDrop](http://www.iharder.net/current/java/filedrop/).
+* JImageViewer inspired from **[Java IMage Viewer](https://windows.lucutech.com/ReadArticle/Read.html#614823-java-image-viewer.html)**.
+* JFileDrop inspired from **[FileDrop](http://www.iharder.net/current/java/filedrop/)**.
 
 ##### Icons
 
-All used icons were made by [Smashicons](https://smashicons.com/) from [www.flaticon.com](https://www.flaticon.com/authors/smashicons).
+All used icons were made by **[Smashicons](https://smashicons.com/)** from **[www.flaticon.com](https://www.flaticon.com/authors/smashicons)**.
 
-> The pack I used is the [Interaction Assets Icon Pack](https://www.flaticon.com/packs/interaction-assets-2).
+> The pack I used is the **[Interaction Assets Icon Pack](https://www.flaticon.com/packs/interaction-assets-2)**.
